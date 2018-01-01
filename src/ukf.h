@@ -1,3 +1,4 @@
+
 #ifndef UKF_H
 #define UKF_H
 
@@ -66,6 +67,12 @@ public:
 
   ///* Sigma point spreading parameter
   double lambda_;
+  
+  ///* the current NIS for radar
+  double NIS_radar_;
+  
+  ///* the current NIS for laser
+  double NIS_laser_;
 
 
   /**
