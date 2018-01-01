@@ -95,10 +95,7 @@ void UKF::ProcessMeasurement(MeasurementPackage meas_package) {
   // skip predict/update if sensor type is ignored
   if ((meas_package.sensor_type_ == MeasurementPackage::RADAR && use_radar_) ||
       (meas_package.sensor_type_ == MeasurementPackage::LASER && use_laser_)) {
-    
-    /*****************************************************************************
-     *  Initialization
-     ****************************************************************************/
+
     if (!is_initialized_) {
       /**
        Initialize state.
@@ -145,9 +142,11 @@ void UKF::ProcessMeasurement(MeasurementPackage meas_package) {
     // Update
     if (meas_package.sensor_type_ == MeasurementPackage::LASER) {
       UpdateLidar(meas_package);
+      std::cout<<"NIS_LASER_"<<NIS_laser_<<endl;
     }
     else if (meas_package.sensor_type_ == MeasurementPackage::RADAR) {
       UpdateRadar(meas_package);
+      std::cout<<"NIS_RADAR_"<<NIS_radar_<<endl;
     }
   }
 }
